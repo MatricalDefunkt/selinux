@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
-license=('custom')
+license=('libselinux-1.0')
 groups=('selinux')
 makedepends=('pkgconf' 'python' 'python-pip' 'python-setuptools' 'ruby' 'xz' 'swig')
 depends=('libsepol>=3.9' 'pcre2')
