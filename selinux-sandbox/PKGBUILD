@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-sandbox
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="sandboxing tool for SELinux"
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ validpgpkeys=(
   '68D21823342A13683AEB3E4EFB4C685B5DC1C13E'  # Petr Lautrbach <lautrbach@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('ada92f43664e0429eb8ebc8dd1d23516c42727f248d44e1373cb35923504cb7f'
+sha256sums=('e2bd13e184f7218155a33ea943281d02f441c297104015beebdfc6d8da6ff5c3'
             'SKIP')
 
 build() {

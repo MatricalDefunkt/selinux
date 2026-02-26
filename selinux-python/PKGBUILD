@@ -4,15 +4,15 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-python
-pkgver=3.9
-pkgrel=2
+pkgver=3.10
+pkgrel=1
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
 makedepends=('python-pip' 'python-setuptools')
-depends=('python' 'python-audit' 'libsemanage>=3.9' 'setools>=4.4.0')
+depends=('python' 'python-audit' 'libsemanage>=3.10' 'setools>=4.4.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")
 validpgpkeys=(
@@ -20,7 +20,7 @@ validpgpkeys=(
   '68D21823342A13683AEB3E4EFB4C685B5DC1C13E'  # Petr Lautrbach <lautrbach@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('dcfa5f1919dcb7e7b775851994eb5c83b7580dc496cd2d1f73867dfa074d2339'
+sha256sums=('9d0a5b69f2fbcce8e5ccd8e0f17d56f71e6005a756386f8fb36c31f9424191a2'
             'SKIP')
 
 build() {

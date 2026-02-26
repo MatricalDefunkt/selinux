@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=semodule-utils
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="SELinux module tools"
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ validpgpkeys=(
   '68D21823342A13683AEB3E4EFB4C685B5DC1C13E'  # Petr Lautrbach <lautrbach@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('729be36e4726c5d0833732681a94b2e0e4aff973c076504e41f8547abb6c5424'
+sha256sums=('1c2f14cc098cbb4d75912d131c5f747e70246e1042e72f2ab40e28f53cf45c10'
             'SKIP')
 
 build() {
