@@ -39,6 +39,7 @@ prepare() {
   # runtime header, breaking the Python bindings build. Fixed upstream
   # after the 3.11 tag:
   # https://github.com/SELinuxProject/selinux/commit/fb518ff492cd6a286f35b415cbd7fd0f6e3faedb
+  # TODO: Remove this patch when updating to 3.12 or later.
   sed -i 's/PyString_FromString/PyUnicode_FromString/g' src/selinuxswig_python.i
 }
 
