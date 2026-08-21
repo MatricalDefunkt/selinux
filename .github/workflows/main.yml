@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build and install Arch Linux's SELinux support packages in a docker container
+      - name: Prepare build environment
         run: |
           mkdir -vp /startdir && \
           cp -Rv . /startdir && \
@@ -33,8 +33,24 @@ jobs:
           chown -R builduser /startdir /packages /build /logdest && \
           sudo -u builduser /startdir/clean.sh && \
           sudo -u builduser /startdir/recv_gpg_keys.sh && \
-          sudo -u builduser git config --global http.postBuffer 536870912 && \
-          sudo -u builduser /startdir/build_and_install_all.sh && \
+          sudo -u builduser git config --global http.postBuffer 536870912
+
+      # Upstream sources are fetched from third-party hosts (AUR, GNU Savannah,
+      # etc.) during the build. Those hosts occasionally drop connections or
+      # return 5xx errors; retrying the whole script is cheap because
+      # build_and_install_all.sh skips packages that are already built and
+      # installed at the correct version.
+      - name: Build and install Arch Linux's SELinux support packages in a docker container
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 90
+          max_attempts: 3
+          retry_wait_seconds: 30
+          shell: bash
+          command: sudo -u builduser /startdir/build_and_install_all.sh
+
+      - name: Collect built packages
+        run: |
           rm -rf /startdir/*/src/ /startdir/*/pkg/ && \
           pacman --noconfirm -Sc && rm -rf /var/cache/pacman/pkg/* && \
           cp /startdir/*/*.pkg.tar.zst /packages
